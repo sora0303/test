@@ -47,12 +47,12 @@ jobs:
       run: docker push raso0303/test
 
   # 쉘 스크립트 실행
-    - name: execute shell script
-      uses: appleboy/ssh-action@master
-      with:
-      host: ${{ secrets.SSH_IP }}         # 인스턴스 플로팅 ip
-      username: ${{ secrets.SSH_ID }}     # user Id
-      key: ${{ secrets.SSH_KEY }}         # github_rsa 개인키
-      port: ${{ secrets.SSH_PORT }}       # ssh 포트 = 22
-      script_stop: true
-      script: "./startup.sh"
+#    - name: execute shell script
+#      uses: appleboy/ssh-action@master
+#      with:
+#      host: ${{ secrets.SSH_IP }}         # 인스턴스 플로팅 ip
+#      username: ${{ secrets.SSH_ID }}     # user Id
+#      key: ${{ secrets.SSH_KEY }}         # github_rsa 개인키
+#      port: ${{ secrets.SSH_PORT }}       # ssh 포트 = 22
+#      script_stop: true
+#      script: "./startup.sh"
