@@ -37,3 +37,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        
+  # 도커 이미지 빌드
+    - name: Build the Docker image
+      run: docker build -t raso0303/test .
