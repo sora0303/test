@@ -27,7 +27,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-        
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
@@ -37,7 +37,22 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        
+
   # 도커 이미지 빌드
     - name: Build the Docker image
       run: docker build -t raso0303/test .
+
+  # 도커 이미지 푸쉬
+    - name: Push the Docker image
+      run: docker push raso0303/test
+
+  # 쉘 스크립트 실행
+    - name: execute shell script
+      uses: appleboy/ssh-action@master
+      with:
+      host: ${{ secrets.SSH_IP }}         # 인스턴스 플로팅 ip
+      username: ${{ secrets.SSH_ID }}     # user Id
+      key: ${{ secrets.SSH_KEY }}         # github_rsa 개인키
+      port: ${{ secrets.SSH_PORT }}       # ssh 포트 = 22
+      script_stop: true
+      script: "./startup.sh"
