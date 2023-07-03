@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk
+FROM eclipse-temurin:11
 
 VOLUME /tmp
 ARG JAR_FILE=./target/*.jar
